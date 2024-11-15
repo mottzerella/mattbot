@@ -16,3 +16,4 @@ tavily-python
 langchainhub
 langchain_community
 langchain-chroma
+pysqlite3-binary
