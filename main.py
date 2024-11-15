@@ -71,7 +71,7 @@ def create_embeddings(chunks):
 nest_asyncio.apply()
 parser = LlamaParse(result_type="markdown")  # "markdown" and "text" are available
 file_extractor = {".pdf": parser}
-llama_parse_documents = SimpleDirectoryReader(input_files=['/Users/mottzerella/Documents/Coding_Practice/ztm_milestone_projects/heart_disease_project/Mattbot/Matt_Zerella_Autobiography.pdf'], 
+llama_parse_documents = SimpleDirectoryReader(input_files=[''Mattbot/Matt_Zerella_Autobiography.pdf'], 
                                               file_extractor=file_extractor, 
                                               file_metadata=None).load_data()
 
