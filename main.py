@@ -1,4 +1,7 @@
-# Importsfrom 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 from llama_parse import LlamaParse
 from llama_index.core import SimpleDirectoryReader
 from langchain_openai import OpenAIEmbeddings
