@@ -28,6 +28,7 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 import nest_asyncio
 import streamlit as st
+import chromadb.api
 
 load_dotenv(find_dotenv(), override=True)
 
@@ -61,6 +62,7 @@ def chunk_data(data, chunk_size=2000, chunk_overlap=200):
     return chunks
 
 def create_embeddings(chunks):
+    chromadb.api.client.SharedSystemClient.clear_system_cache()
     embeddings = OpenAIEmbeddings(model='text-embedding-3-small', dimensions=1536) 
     vector_store = Chroma.from_documents(chunks, embeddings)
     return vector_store
