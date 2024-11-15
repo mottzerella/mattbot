@@ -1,5 +1,6 @@
 openai
 langchain
+pysqlite3-binary
 langchain_openai
 chromadb
 docx2txt
@@ -16,4 +17,4 @@ tavily-python
 langchainhub
 langchain_community
 langchain-chroma
-pysqlite3-binary
+
