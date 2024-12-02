@@ -17,4 +17,9 @@ tavily-python
 langchainhub
 langchain_community
 langchain-chroma
-
+llama-index-llms-langchain 
+llama-index
+llama-index-embeddings-langchain
+llama-index-embeddings-huggingface
+-qU "langchain-community>=0.2.11" tavily-python
+tavily-python
