@@ -42,7 +42,7 @@ os.environ['LANGCHAIN_API_KEY'] = st.secrets['LANGCHAIN_API_KEY']
 os.environ['LLAMA_CLOUD_API_KEY'] = st.secrets['LLAMA_CLOUD_API_KEY']
 os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 os.environ['PINECONE_API_KEY'] = st.secrets['PINECONE_API_KEY']
-os.environ["TAVILY_API_KEY"] = st.secrets[TAVILY_API_KEY']
+os.environ['TAVILY_API_KEY'] = st.secrets['TAVILY_API_KEY']
 parser = LlamaParse(result_type="markdown")
 
 llama = "meta-llama/Meta-Llama-3.1-70B-Instruct"
@@ -51,11 +51,6 @@ llm = ChatOpenAI(model_name= 'gpt-4o', temperature = 0.5, top_p = 0.9)
 #Enable switching between Llama prompt and GPT-4o prompt 
 #LLM = DeepInfra(model_id="meta-llama/Meta-Llama-3.1-70B-Instruct")
 #LLM.model_kwargs = {'temperature': 0.5, 'repitition_penalty': 1.2,'max_new_tokens': 250, 'top_p': 0.9}
-
-os.environ['LANGCHAIN_API_KEY'] = st.secrets['LANGCHAIN_API_KEY']
-os.environ['LLAMA_CLOUD_API_KEY'] = st.secrets['LLAMA_CLOUD_API_KEY']
-os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
-os.environ['PINECONE_API_KEY'] = st.secrets['PINECONE_API_KEY']
 
 nest_asyncio.apply()
 
