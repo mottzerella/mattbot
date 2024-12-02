@@ -243,7 +243,7 @@ if __name__ == "__main__":
                 st.success("Thanks for asking!")
 
             # the current question and answer
-            value = f'Q: {question} \nA: {answer["answer"]}'
+            value = f'Q: {question} \nA: {answer["output"]}'
 
             st.session_state.history = f'{value} \n {"-" * 100} \n {st.session_state.history}'
             h = st.session_state.history
