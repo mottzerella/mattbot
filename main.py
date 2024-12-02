@@ -233,7 +233,7 @@ if __name__ == "__main__":
 
             
             # text area widget for the LLM answer
-            st.text_area('LLM Answer: ', value=answer['answer'])
+            st.text_area('LLM Answer: ', value=answer['output'])
 
             st.divider()
 
