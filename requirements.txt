@@ -1,6 +1,6 @@
 openai
 langchain
-#pysqlite3-binary
+pysqlite3-binary
 langchain_openai
 chromadb
 docx2txt
