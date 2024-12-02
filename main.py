@@ -164,9 +164,9 @@ langchain_tools = [search_tool]
 
 
 papers = [
-'/Users/mottzerella/Documents/Coding_Practice/ztm_milestone_projects/heart_disease_project/Mattbot/Personal_life.pdf',
-'/Users/mottzerella/Documents/Coding_Practice/ztm_milestone_projects/heart_disease_project/Mattbot/answers_to_common_interview_questions.pdf',
-'/Users/mottzerella/Documents/Coding_Practice/ztm_milestone_projects/heart_disease_project/Mattbot/work_experience.pdf'
+'Personal_life.pdf',
+'answers_to_common_interview_questions.pdf',
+'work_experience.pdf'
 ]
 paper_to_tools_dict = {}
 for paper in papers:
