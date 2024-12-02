@@ -38,7 +38,11 @@ from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_community.tools.tavily_search import TavilySearchResults
 import streamlit as st
 
-os.environ["TAVILY_API_KEY"] = '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'
+os.environ['LANGCHAIN_API_KEY'] = st.secrets['LANGCHAIN_API_KEY']
+os.environ['LLAMA_CLOUD_API_KEY'] = st.secrets['LLAMA_CLOUD_API_KEY']
+os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
+os.environ['PINECONE_API_KEY'] = st.secrets['PINECONE_API_KEY']
+os.environ["TAVILY_API_KEY"] = st.secrets[TAVILY_API_KEY']
 parser = LlamaParse(result_type="markdown")
 
 llama = "meta-llama/Meta-Llama-3.1-70B-Instruct"
