@@ -222,7 +222,7 @@ if __name__ == "__main__":
     question = st.text_input('What would you like to know about me?')
 
     if question: # if the user entered a question and hit enter
-        if 'vs' in st.session_state and 'chain' in st.session_state: # if there's the vector store (user uploaded, split and embedded a file)
+        if 'agent' in st.session_state and 'chain' in st.session_state: # if there's the vector store (user uploaded, split and embedded a file)
             chain = st.session_state.chain
             agent = st.session_state.agent
             tools = st.session_state.tools
