@@ -54,6 +54,7 @@ llm = ChatOpenAI(model_name= 'gpt-4o', temperature = 0.5, top_p = 0.9)
 
 nest_asyncio.apply()
 
+@st.cache_resource
 def get_doc_tools(
     file_path: str,
     name: str,
@@ -90,7 +91,7 @@ def get_doc_tools(
         ]
         
         query_engine = vector_index.as_query_engine(
-            similarity_top_k=2,
+            similarity_top_k=8,
             filters=MetadataFilters.from_dicts(
                 metadata_dicts,
                 condition=FilterCondition.OR
@@ -132,6 +133,7 @@ If you don't know the answer, just say that you don't know, but that you would l
 information.  If the question is open-ended or too broad, ask for the user to make the question more specific.
 
 If asked to share your contact info, share that your phone number is (408) 857-0815 and your email is mzerella2@gmail.com
+If prompted to share your resume, produce a full list of chronological work experience with highlights for each role
 
 {chat_history}
 """
@@ -182,16 +184,20 @@ tools = multi_doc_tools + langchain_tools
 # Construct the Tools agent
 agent = create_tool_calling_agent(llm, tools, prompt,)
 
+@st.cache_resource
+def get_agent_executor(_agent, _tools):
+    agent_executor = AgentExecutor(agent=agent, 
+                                    tools=tools, 
+                                    verbose=True, 
+                                    return_intermediate_steps=True, 
+                                    handle_parsing_errors=True, 
+                                    max_iterations=10)
+    return agent_executor
+agent_executor = get_agent_executor(_agent=agent, _tools=tools)
+
 
 def get_multi_doc_chain():
     msgs = StreamlitChatMessageHistory(key="langchain_messages")
-
-    agent_executor = AgentExecutor(agent=agent, 
-                                tools=tools, 
-                                verbose=True, 
-                                return_intermediate_steps=True, 
-                                handle_parsing_errors=True, 
-                                max_iterations=10)
 
     multi_doc_chain = RunnableWithMessageHistory(
         agent_executor,
@@ -217,15 +223,15 @@ if __name__ == "__main__":
     st.session_state.chain = chain
 
     # saving the vector store in the streamlit session state (to be persistent between reruns)
-    st.session_state.tools = tools
-    st.session_state.agent = agent
+    #st.session_state.tools = tools
+    #st.session_state.agent = agent
     question = st.text_input('What would you like to know about me?')
 
     if question: # if the user entered a question and hit enter
-        if 'agent' in st.session_state and 'chain' in st.session_state: # if there's the vector store (user uploaded, split and embedded a file)
-            chain = st.session_state.chain
-            agent = st.session_state.agent
-            tools = st.session_state.tools
+        if 'chain' in st.session_state: # if there's the vector store (user uploaded, split and embedded a file)
+            #chain = st.session_state.chain
+            #agent = st.session_state.agent
+            #tools = st.session_state.tools
             #st.write(f'k: {k}')
 
             answer = chain.invoke({"input": question},
