@@ -217,7 +217,7 @@ if __name__ == "__main__":
 
     #st.image('')
     st.header('Welcome to Mattbot! :party')
-    st.subheader('I use an Agentic RAG workflow under the hood. Be friendly, I'm still in beta')
+    st.subheader("I use an Agentic RAG workflow under the hood. Be friendly, I'm still in beta :smile")
    #with st.sidebar:
     
     chain = get_multi_doc_chain()
