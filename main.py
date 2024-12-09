@@ -216,7 +216,8 @@ if __name__ == "__main__":
     load_dotenv(find_dotenv(), override=True)
 
     #st.image('')
-    st.subheader('Welcome to Mattbot!')
+    st.header('Welcome to Mattbot! :party')
+    st.subheader('I use an Agentic RAG workflow under the hood. Be friendly, I'm still in beta :)')
    #with st.sidebar:
     
     chain = get_multi_doc_chain()
